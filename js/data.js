@@ -1279,7 +1279,7 @@ var boxList = new Vue({
                     },
                     {
                         href: 'http://d.aamaomi.com/signup?invite_uid=gzj3LDoA0kb2yaNZ',
-                        src: 'img/logo.jpg',
+                        src: 'img/logo.png',
                         name: '咪咪联盟',
                         text: '刷单平台'
                     },
