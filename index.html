@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>前端网址导航</title>
+	<!-- <link rel="shortcut icon" href="img/logo.png" /> -->
+	<link href="img/logo.png" rel="shortcut icon">
+	<link rel="stylesheet" href="css/iconfont.css">
+	<link rel="stylesheet" href="css/style.css?v=1.7">
+
+	<!-- <script type="text/javascript">
+		document.write("<link rel='stylesheet' href='./css/style.css?v=" + new Date().getTime() + "'>");
+	</script> -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157349190-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-157349190-1');
+	</script>
+
+</head>
+
+<body>
+	<div class="container" id="container" id="app">
+		<aside class="left-bar" id="leftBar">
+			<nav class="nav">
+				<div class="item active" style="margin-bottom: 200px;">
+					<a href="">
+						<i class="iconfont icon-Appreciate" style="margin-left: 60px;"> 赞赏</i>
+						<img src="img/二维码收款.png" style="width: 150px;margin: 20px 20px;">
+					</a>
+					<i class="line"></i>
+				</div>
+				<ul class="nav-item" id="navItem" style="border-right: 3px solid #6b7386;">
+					<li v-for="item in navItem" v-cloak><a :href="item.url"><i class="iconfont "
+								:class="item.class"></i>{{item.text}}</a></li>
+				</ul>
+				<div class="item comment">
+					<a target="_blank" href="http://112.74.171.160:3000/resume/">
+						<i class="iconfont icon-Jump" style="margin-left: 40px;"> 前端网址导航</i>
+					</a>
+				</div>
+			</nav>
+		</aside>
+		<section class="main">
+			<div id="mainContent">
+				<!-- 手机端菜单 -->
+				<div id="menu"><a href="#">菜单</a></div>
+				<!-- 搜索引擎 -->
+				<div class="box">
+					<div id="google">
+						<div id="google-img">
+							<img src="img/google.png">
+						</div>
+						<div id="google-form">
+							<form method=get action="https://www.google.com/search" target="_blank">
+								<input type=text name=q size=40 maxlength=255>
+								<input type=submit name=btnG value="谷歌搜索" id="anniu">
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- 网页数据列表 -->
+				<div id="boxList">
+					<div class="box" v-for="(item,index) in boxList" :key="index" v-cloak>
+						<a href="" :name="item.name"></a>
+						<div class="sub-category">
+							<div><i class="iconfont" :class="item.class"></i>{{item.text}}</div>
+						</div>
+						<div v-for="(item,index) in item.list" :key="index" v-cloak>
+							<a target="_blank" :href="item.href">
+								<div class="item">
+									<div class="logo">
+										<img :src="item.src">{{item.name}}</div>
+									<div class="desc">{{item.text}}</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer">
+				<div class="copyright">
+					<div>
+						Copyright © <script>document.write((new Date).getFullYear())</script> 　
+						<a target="_blank" href="http://112.74.171.160:3000/resume/">前端网址导航</a>
+					</div>
+				</div>
+			</footer>
+		</section>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+	<!-- <script src="./js/data.js?v=1.001"></script> -->
+		<!-- <script src="./js/data.js"></script> -->
+	<script type="text/javascript">
+		document.write("<script src='./js/data.js?v=" + new Date().getTime() + "'>");
+	</script>
+
+
+	<script>
+		var oMenu = document.getElementById('menu');
+		var oBtn = oMenu.getElementsByTagName('a')[0];
+		var oLeftBar = document.getElementById('leftBar');
+		oBtn.onclick = function () {
+			if (oLeftBar.offsetLeft == 0) {
+				oLeftBar.style.left = -249 + 'px';
+			} else {
+				oLeftBar.style.left = 0 + 'px';
+			}
+			if (document.documentElement.clientWidth <= 481) {
+				document.onclick = function () {
+					if (oLeftBar.offsetLeft == 0) {
+						oLeftBar.style.left = -249 + 'px';
+					}
+				}
+			}
+		}
+		var oNavItem = document.getElementById('navItem');
+		var aA = oNavItem.getElementsByTagName('a');
+		for (var i = 0; i < aA.length; i++) {
+			aA[i].onclick = function () {
+				for (var j = 0; j < aA.length; j++) {
+					aA[j].className = '';
+				}
+				this.className = 'active';
+			}
+		}
+	</script>
+	<script>
+		localStorage.clear();
+	</script>
+
+</body>
+
+</html>
